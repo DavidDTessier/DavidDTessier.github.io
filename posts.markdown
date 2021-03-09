@@ -1,5 +1,7 @@
 ---
 layout: default
+title: Posts
+permalink: /posts
 ---
 
 <div id="home">
