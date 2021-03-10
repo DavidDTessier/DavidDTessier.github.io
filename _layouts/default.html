@@ -57,16 +57,29 @@
         </section>
 
         <aside id="sidebar">
-          <p> Follow Me ! </p>
-          <a href="https://www.linkedin.com/in/david-tessier-66749613/" target="_blank"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
-          <a href="https://github.com/DavidDTessier" target="_blank"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+          <h1> Follow Me ! </h1>
+          <a href="https://www.linkedin.com/in/david-tessier-66749613/" target="_blank"><i class="fa fa-linkedin fa-3x" aria-hidden="true"></i></a>
+          <a href="https://github.com/DavidDTessier" target="_blank"><i class="fa fa-github fa-3x" aria-hidden="true"></i></a>
+        
+         
+          <div id="home">
+          <h1>Blog Posts</h1>
+          <ul class="posts">
+            {% for post in site.posts limit:5 %}
+              <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+            {% endfor %}
+          </ul>
+          See all posts click <a href="{{ site.baseurl}}/posts">here</a>
+        </div>
         </aside>
       </div>
     </div>
 
     <footer>
       <hr />
+      <div id="copy">
       Copyright &copy; 2021 David Tessier 
+      </div>
       <div id="socal">
         <a href="https://www.linkedin.com/in/david-tessier-66749613/" target="_blank"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a>
         <a href="https://github.com/DavidDTessier" target="_blank"><i class="fa fa-github fa-lg" aria-hidden="true"></i></a>

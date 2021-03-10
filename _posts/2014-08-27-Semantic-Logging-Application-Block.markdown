@@ -6,7 +6,10 @@ categories: SLAB logging monitoring
 ---
 
 SLAB? (Here is a bit of an explanation)
-> The Semantic Logging Application Block or SLAB for short provides a set of destinations (sinks) to persist application events published using a subclass of the EventSource class from the System.Diagnostics.Tracing namespace. Sinks include Azure table storage, SQL Server databases, file, console and rolling files with several formats and you can extend the block by creating your own custom formatters and sinks. The console sink is part of this nuget package. Other Sinks mentioned above are available as separate nuget packages. For the sinks that can store structured data, the block preserves the full structure of the event payload in order to facilitate analysing or processing the logged data. (see https://www.nuget.org/packages/EnterpriseLibrary.SemanticLogging.Service)
+
+> The Semantic Logging Application Block or SLAB for short provides a set of destinations (sinks) to persist application events published using a subclass of the EventSource class from the System.Diagnostics.Tracing namespace. Sinks include Azure table storage, SQL Server databases, file, console and rolling files with several formats and you can extend the block by creating your own custom formatters and sinks. The console sink is part of this nuget package. Other Sinks mentioned above are available as separate nuget packages. For the sinks that can store structured data, the block preserves the full structure of the event payload in order to facilitate analysing or processing the logged data.
+> -- <cite>[NuGet SemanticLogging.Service][1]<cite>
+
 
 Our team uses SLAB Out-of-Process logging for all our services to log exceptions and performance metrics. Recently while testing Phase 2 of our services, our QA team was plagued with dreaded unauthorized errors while trying to authenticate to our services. We began investigating our logs to see if we could find the culprit of the issue, and to our surprise we found that NOTHING HAD BEEN LOGGED! However when we ran the services locally our performance counters and exception was being logged, which we found very odd.
 
@@ -19,3 +22,6 @@ SemanticLogging-svc.exe -s -a=LocalSystem
 {% endhighlight %}
 
 I hope this post helps others who are struggling with getting the SLAB Out-of-process logging up and running correctly.
+
+
+[1]:https://www.nuget.org/packages/EnterpriseLibrary.SemanticLogging.Service
