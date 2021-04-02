@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Microservices with Dapr!"
-date:   2021-04-01 15:53:00
+date:   2021-04-02 10:03:00
 categories: dapr microservices .net containerization
 ---
 
