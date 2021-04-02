@@ -3,8 +3,9 @@ layout: default
 title: Home
 permalink: /
 ---
+&nbsp;&nbsp;
 
-Hey there!
+Hey there! 
 
 Welcome to my ramblings, but first a little bit about myself.
 
