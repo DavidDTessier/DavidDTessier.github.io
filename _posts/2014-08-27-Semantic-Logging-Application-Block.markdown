@@ -2,7 +2,7 @@
 layout: post
 title:  "Semantic Logging Application Block Out-of-process Service running but not logging..why?"
 date:   2014-08-27 15:40:56
-categories: SLAB logging monitoring
+tags: [logging, monitoring]
 ---
 
 SLAB? (Here is a bit of an explanation)
