@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Infrastructure-As-Code (IaC) Tooling Options Comparison - Part 1"
-date:   2021-05-27 21:00:00
+date:   2021-05-31 19:37:00
 tags: [IaC, devops, cloud, terraform, pulumi, arm, cloudformation, aws, gcloud, azure]
 ---
 
