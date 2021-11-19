@@ -6,7 +6,7 @@ date:   2021-11-19 16:31:00
 tags: [IaC, devops, cloud, terraform, pulumi, arm, cloudformation, aws, gcloud, azure, draft]
 ---
 
-**DRAFT**
+<h1>THIS IS IN DRAFT....</h1>
 In [part 1](/2021/05/31/Infras-As-Code-P1.html) we reviewed what infrastructure-as-code tools are as well as the following tools: [Terraform](https://www.terraform.io/) and [Terraform CDK](https://github.com/hashicorp/terraform-cdk).
 
 In this second volume we will continue our disection of IaC tools; this time reviewing will will be focusing on Azure's two native solutions:
