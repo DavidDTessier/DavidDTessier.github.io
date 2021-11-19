@@ -217,7 +217,7 @@ Navigating to the hostname in your browser it should show the following page:
 
 If you navigate to the Azure Portal and go to the newly create resource group you will see that this process has generated a successful deployment as shown in the image below. This is the how Azure manages the difference between changes to the template and what is deployed in the environment.
 
-![Azure RG Deployments](../images/azure-deployments.png)
+![Azure RG Deployments](/images/azure-deployments.png)
 
 ## Potential downsides for the user
 
