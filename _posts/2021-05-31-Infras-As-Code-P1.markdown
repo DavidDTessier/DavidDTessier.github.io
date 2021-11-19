@@ -33,11 +33,12 @@ In this series of posts, I will be focusing on _IaC_ or infrastructure orchestra
 * [Terraform](www.terraform.io)
 * [Terraform Cloud Development Kit (CDK)](https://github.com/hashicorp/terraform-cdk)
 * [Azure Resource Manager (ARM)](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview)
-* [CloudFormation](https://aws.amazon.com/cloudformation/)
-* [Cloud Deployment Manager](https://cloud.google.com/deployment-manager)
-* [AWS Cloud Development Kit (CDK)](https://aws.amazon.com/cdk/)
-* [Pulumi](https://www.pulumi.com/)
 * [Azure Bicep](https://devblogs.microsoft.com/devops/project-bicep-next-generation-arm-templates/)
+* [CloudFormation](https://aws.amazon.com/cloudformation/)
+* [AWS Cloud Development Kit (CDK)](https://aws.amazon.com/cdk/)
+* [Cloud Deployment Manager](https://cloud.google.com/deployment-manager)
+* [Pulumi](https://www.pulumi.com/)
+
 
 In this first post I will be focusing on _Terraform_ and _Terraform CDK_.
 
