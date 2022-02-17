@@ -2,7 +2,7 @@
 layout: post
 title:  "Infrastructure-As-Code (IaC) Tooling Options Comparison - Part 2"
 date:   2021-11-19 16:31:00
-tags: [IaC, devops, cloud, terraform, pulumi, arm, cloudformation, aws, gcloud, azure, draft]
+tags: [IaC, devops, cloud, terraform, pulumi, arm, cloudformation, aws, gcloud, azure]
 ---
 
 In [part 1](/2021/05/31/Infras-As-Code-P1.html) we reviewed what infrastructure-as-code tools are as well as the following tools: [Terraform](https://www.terraform.io/) and [Terraform CDK](https://github.com/hashicorp/terraform-cdk).
