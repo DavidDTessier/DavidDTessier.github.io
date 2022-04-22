@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Infrastructure-As-Code (IaC) Tooling Options Comparison - Part 2"
+title:  "Infrastructure-As-Code (IaC) Tooling Options Comparison - Part 3"
 draft: true
 date:   2021-12-03 15:17:00
 tags: [IaC, devops, cloud, terraform, pulumi, arm, cloudformation, aws, gcloud, azure, draft]
@@ -17,7 +17,7 @@ In this third volume we will continue our disection of IaC tools; this time revi
 
 ## What is CloudFromation
 
-_CloudFormation_ or typically referred to as _CF_ for short is AWS's native tooling for deploying and managing of services/infrastructure within its cloud environment. 
+_CloudFormation_ or typically referred to as _CF_ for short is AWS's native tooling for deploying and managing of services/infrastructure within its cloud environment.
 
 It provides a centralized management layer that allows users to create, update, and delete resources in your Azure account using Azure tools, APIs, or SDKs.
 
@@ -26,14 +26,14 @@ For those unfamiliar with _Azure Resource Manager_ let's breakdown some of the k
 * _resource_
   * A manageable item that is available through Azure. Virtual machines, storage accounts, web apps, databases, and virtual networks are examples of resources. Resource groups, subscriptions, management groups, and tags are also examples of resources.
 * _resource group_
-  * A container that holds related resources for an Azure solution. The resource group includes those resources that you want to manage as a group. You decide which resources belong in a resource group based on what makes the most sense for your organization. 
-* _resource provider_ 
-  * A service that supplies Azure resources. For example, a common resource provider is Microsoft.Compute, which supplies the virtual machine resource. Microsoft.Storage is another common resource provider. 
-* _Resource Manager template_ 
-  * A JavaScript Object Notation (JSON) file that defines one or more resources to deploy to a resource group, subscription, management group, or tenant. The template can be used to deploy the resources consistently and repeatedly. 
+  * A container that holds related resources for an Azure solution. The resource group includes those resources that you want to manage as a group. You decide which resources belong in a resource group based on what makes the most sense for your organization.
+* _resource provider_
+  * A service that supplies Azure resources. For example, a common resource provider is Microsoft.Compute, which supplies the virtual machine resource. Microsoft.Storage is another common resource provider.
+* _Resource Manager template_
+  * A JavaScript Object Notation (JSON) file that defines one or more resources to deploy to a resource group, subscription, management group, or tenant. The template can be used to deploy the resources consistently and repeatedly.
 * _declarative syntax_
-  * Syntax that lets you state "Here is what I intend to create" without having to write the sequence of programming commands to create it. The Resource Manager template is an example of declarative syntax. In the file, you define the properties for the infrastructure to deploy to Azure. 
-  
+  * Syntax that lets you state "Here is what I intend to create" without having to write the sequence of programming commands to create it. The Resource Manager template is an example of declarative syntax. In the file, you define the properties for the infrastructure to deploy to Azure.
+
 
 From an IaC perspective the typical approach to leverage _ARM_ is using _ARM Templates_ which are JavaScript Object Notation (JSON) based files that define the resources that make up your environment.
 
@@ -82,7 +82,7 @@ The file is split into six sections:
 * _outputs_:
   * This section defines the values that are returned after deployment.
 
-Unlike Terraform, as described in the previous article,  which use remote state to manage the environment; Azure manages the deployments internally and no additional steps are required. 
+Unlike Terraform, as described in the previous article,  which use remote state to manage the environment; Azure manages the deployments internally and no additional steps are required.
 
 Now that we have defined what the template consists of, let's take a look at a sample template that will deploy a webserver in Azure.
 
@@ -96,7 +96,7 @@ To keep this concise, the full sample can be found [here](https://github.com/Dav
     "parameters": { .... },
     "variables": { ... },
     "functions": [],
-    "resources": [ 
+    "resources": [
         ...
         {
         "type": "Microsoft.Compute/virtualMachines",
@@ -174,17 +174,17 @@ To keep this concise, the full sample can be found [here](https://github.com/Dav
         }
       }
     ],
-    "outputs": { 
+    "outputs": {
         "hostname": {
             "type": "string",
             "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIpName'))).dnsSettings.fqdn]"
-      } 
+      }
     }
 }
 ```
 
 Once the template is fully defined you can leverage [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) or [Azure Powershell]
-(https://docs.microsoft.com/en-us/powershell/azure/?view=azps-6.6.0) to deploy the template. 
+(https://docs.microsoft.com/en-us/powershell/azure/?view=azps-6.6.0) to deploy the template.
 
 For our example we will use Azure CLI. First you must create a resource group that will contain the resources in the template:
 
@@ -225,44 +225,44 @@ JSON notation can become unreadable depending on the complexity of your template
 
 # Azure Bicep
 
-## What is Azure Bicep? 
+## What is Azure Bicep?
 
 Bicep is a domain-specific language, it is a replacement for developing Azure Resource Manager templates in JSON. Bicep reduces the complexity of developing in JSON and provides efficient scale deployments of Azure resources.
 
 ## What are the benefits of Azure Bicep
 
-1. Simple syntax: 
+1. Simple syntax:
  Compared to writing in JSON, Bicep is concise and easy to read. It is easy to pick up and understand even from a user with little to no coding experience.
 
-2. First party support: 
+2. First party support:
  Bicep supports all preview and GA versions of Azure services right out of the box. As Azure resource providers push out new versions of their product, Bicep is able to use them in file right away.
 
-3. No state or state files to manage: 
+3. No state or state files to manage:
  Using a what-if operation, users can manage and update their deployments. (More elaboration on "what-if" later in the article -How to run Bicep code) State files allow users to have more predictable  deployments, however they must be updated on every update to the code. A lack of state files allows for more fluidity albeit with more uncertainity in the success of the deployment.
 
-4. Modular: 
- "Modules" are files that can be built outside of main project files and then consumed in order to quickly and efficiently deploy resources across multiple projects. 
+4. Modular:
+ "Modules" are files that can be built outside of main project files and then consumed in order to quickly and efficiently deploy resources across multiple projects.
 
-5. Efficiency: 
+5. Efficiency:
  When building resources, users are prompted with a "required properties" [When coding in VS code with the Azure Bicep extension]. This will autofill the required fields to launch the specified resources, this does not limit the user to the customization of said resource either.
 
-6. Familiarity // ease of use: 
- The structure and flow of Bicep can be similar to that of Terraform. Veteran users will have no issue transitioning beetween the two languages. First time users will also be quick to learn as the language is very conventional. 
+6. Familiarity // ease of use:
+ The structure and flow of Bicep can be similar to that of Terraform. Veteran users will have no issue transitioning beetween the two languages. First time users will also be quick to learn as the language is very conventional.
 
 
 ## Potential downsides for the user
 
-1.  Bicep can be new line sensitive. This can be a hassle in terms of code organization and clarity. 
+1.  Bicep can be new line sensitive. This can be a hassle in terms of code organization and clarity.
 
 2. No support for single line arrays or objects. [An inconvenience and might cause clutter but still functional]
 
-3. Lacking documentation in comparison to terraform. This might not be a problem for those well versed in the various resources. 
+3. Lacking documentation in comparison to terraform. This might not be a problem for those well versed in the various resources.
 
-4. No managing state files, Bicep documentation sites this as an upside, however some users might not like this out of preference. 
+4. No managing state files, Bicep documentation sites this as an upside, however some users might not like this out of preference.
 
-5. Deployment error messages. Unlike Terraform, when there is a deployment error in Bicep, the user must navigate through the Azure portal in order to find the source of error. 
+5. Deployment error messages. Unlike Terraform, when there is a deployment error in Bicep, the user must navigate through the Azure portal in order to find the source of error.
 
-## Sample code 
+## Sample code
 
 The full sample that I am highlighting here can be found on my [github repo](https://github.com/DavidDTessier/iac-tools-samples/blob/main/Azure_Native/Bicep/azuredeploy.bicep).
 
@@ -328,9 +328,9 @@ As you can see the structure is very similar to _Terraform_'s declarative syntax
 
 ## How to run Bicep code
 
-Instead of the traditional terraform plan and state files, bicep uses a what-if operation. 
+Instead of the traditional terraform plan and state files, bicep uses a what-if operation.
 
-~~~~ 
+~~~~
 az deployment group what-if --mode Incremental --name rollout01 --resource-group testrg --template-file demotemplate.json
 ~~~~
 
@@ -363,24 +363,24 @@ Scope: /subscriptions/./resourceGroups/ExampleGroup
 Resource changes: 1 to modify.
 ~~~~
 
-This format of deployment preview Bicep unlike Terraform, does not save this preview/plan to a state file. Similar to running terraform plan without using "-out" to save the plan and then deploying your code. 
+This format of deployment preview Bicep unlike Terraform, does not save this preview/plan to a state file. Similar to running terraform plan without using "-out" to save the plan and then deploying your code.
 
-There are multiple ways to launch resources in Bicep. Since the project presented is heavily parameterized it must be launched in the following format: 
+There are multiple ways to launch resources in Bicep. Since the project presented is heavily parameterized it must be launched in the following format:
 
-az deployment group create \ 
---resource-group ResG \ 
+az deployment group create \
+--resource-group ResG \
 --template-file <path-to-bicep> \
 --parameters location="eastus2" dataFactoryName="exampledf" ... etc \
 
 These parameters can be filled within the respective modules/main file; if a parameter is used across multiple modules or separate workspaces/deployments are needed, they can be passed throught the azure cli as shown.
 
-# Terraform Vs Bicep 
+# Terraform Vs Bicep
 
-Is there a reason to use Bicep over Terraform? From a beginners persepective, Bicep has a larger learning curve and was made much easier due to having learned Terraform first. The skills that are learned from whatever domain you first learn in Terraform are transferrable to other cloud domains. Whereas generally speaking, due to the domain specific nature of Bicep, the skills are not necessarily transferrable. 
+Is there a reason to use Bicep over Terraform? From a beginners persepective, Bicep has a larger learning curve and was made much easier due to having learned Terraform first. The skills that are learned from whatever domain you first learn in Terraform are transferrable to other cloud domains. Whereas generally speaking, due to the domain specific nature of Bicep, the skills are not necessarily transferrable.
 
 In terms of which language is more useful for the long term. Investing time in to Terraform seems to be the better option. Keep in mind that after learning the basics of Terraform and the fundamentals of cloud, you essentially have learned Bicep (at the very least it becomes easier to pick up).
 
-Bicep is a powerful language that enables the user to launch Azure resources quickly and efficiently. However, it is hard to say that the time investment for Bicep is more valuable than putting time in to Terrafom. It just is not the powerful multi domain tool that Terraform is. 
+Bicep is a powerful language that enables the user to launch Azure resources quickly and efficiently. However, it is hard to say that the time investment for Bicep is more valuable than putting time in to Terrafom. It just is not the powerful multi domain tool that Terraform is.
 
 
 # Azure Bicep vs Azure ARM Templates
@@ -388,4 +388,3 @@ Bicep is a powerful language that enables the user to launch Azure resources qui
 In final thoughts when we compare ARM templates JSON notation to Bicep's declarative (Terraform like) syntax I would lean more towards using Bicep. The reason behind this is that Microsoft is investing time to make Bicep more user friendly and the backing tooling like [VS Code Bicep Extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep) make build bicep code so much easier that understanding the JSON schema to build ARM templates.
 
 When it comes to _Bicep_ over _Terraform_ it is still an interesting debate as to which is best suited. If your organization is only interested in Azure and are not looking at other cloud providers than the clear winner is Bicep; however if your looking for a muti-cloud approach than I would go with Terraform as you can build you multi-cloud environment with a single code base.
-

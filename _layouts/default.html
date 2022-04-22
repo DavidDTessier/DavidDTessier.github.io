@@ -53,7 +53,7 @@
       </div>
       <div class="inner clearfix">
         <section id="main-content">
-          
+
           {{ content }}
 
         </section>
@@ -62,14 +62,13 @@
           <h1> Follow Me ! </h1>
           <a href="https://www.linkedin.com/in/david-tessier-66749613/" target="_blank"><i class="fa fa-linkedin fa-3x" aria-hidden="true"></i></a>
           <a href="https://github.com/DavidDTessier" target="_blank"><i class="fa fa-github fa-3x" aria-hidden="true"></i></a>
-        
-         
+
+
           <div id="home">
           <h1>Blog Posts</h1>
           <ul class="posts">
             {% for post in site.posts limit:5 %}
               {% if post.tags contains 'draft' %}
-                 <li><span>{{ post.date | date_to_string }} - DRAFT</span> &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
               {% else %}
                 <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
               {% endif %}
@@ -84,7 +83,7 @@
     <footer>
       <hr />
       <div id="copy">
-      Copyright &copy; 2021 David Tessier 
+      Copyright &copy; 2021 David Tessier
       </div>
       <div id="socal">
         <a href="https://www.linkedin.com/in/david-tessier-66749613/" target="_blank"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a>
