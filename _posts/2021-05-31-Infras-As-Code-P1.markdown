@@ -8,13 +8,13 @@ tags: [IaC, devops, cloud, terraform, pulumi, arm, cloudformation, aws, gcloud, 
 
 # What is Infrastructure-As-Code?
 
-For years IT teams managed their data center infrastructure using a purely manual approach by physically setting up servers, installing and configuring the operating system. This process also included manually connecting the networks, middleware, and storage appliances. 
+For years IT teams managed their data center infrastructure using a purely manual approach by physically setting up servers, installing and configuring the operating system. This process also included manually connecting the networks, middleware, and storage appliances.
 
 Managing all this infrastructure is a tedious full-time job but this was improved with the adoption of technologies like virtualization. Virtualization enabled developers to provision their own infrastructure like containers and virtual machines whenever they needed.
 
 With the emergence of public cloud providers like Google Cloud, Amazon AWS, and Microsoft Azure managing critical infrastructure has been revolutionized. Along with cloud technologies and the adoption of the devops approach to software development, IT teams have started making their job a bit easier by leveraging automation through scripts that provision, configure and manage the infrastructure.
 
-This new process evolved into what we all know today as _Infrastructure-as-Code_ or _IaC_, which is the automation of infrastructure provisioning and management using software development principles and practices. You manage your infrastructure through a high-level descriptive model and use the same version control methods as traditional software development code. 
+This new process evolved into what we all know today as _Infrastructure-as-Code_ or _IaC_, which is the automation of infrastructure provisioning and management using software development principles and practices. You manage your infrastructure through a high-level descriptive model and use the same version control methods as traditional software development code.
 
 The idea behind _IaC_ is to treat your infrastructure like software. Write code, test it, and execute it to provision, update, and delete the required infrastructure. This code, like traditional software code, can be changed, updated, and deployed through a _continuous integration / continuous delivery_ (CI/CD) process.
 
@@ -22,9 +22,9 @@ The idea behind _IaC_ is to treat your infrastructure like software. Write code,
 
 ![IaC Tooling](/images/iac-tools.jpeg)
 
-This statement may stir some arguments within the community but in my opinion there are two categories of tooling for infrastructure _Configuration-As-Code_ (CaC) and _Infrastructure-As-Code_ (IaC). 
+This statement may stir some arguments within the community but in my opinion there are two categories of tooling for infrastructure _Configuration-As-Code_ (CaC) and _Infrastructure-As-Code_ (IaC).
 
-_CaC_ tools are used to configure the software and systems on the infrastructure whereas _IaC_ tools orchestrate the provisioning/creation of the infrastructure. 
+_CaC_ tools are used to configure the software and systems on the infrastructure whereas _IaC_ tools orchestrate the provisioning/creation of the infrastructure.
 
 Some may interchangeably use _CaC_ tools, like [Ansible](https://www.ansible.com/) and [Chef](https://www.chef.io/), to provision their infrastructure but they are not really meant for infrastructure orchestration. These tools are meant to work together, _IaC_ tools for provisioning your infrastructure and _CaC_ tools for configuring and managing your infrastructure.
 
@@ -42,9 +42,9 @@ In this series of posts, I will be focusing on _IaC_ or infrastructure orchestra
 
 In this first post I will be focusing on _Terraform_ and _Terraform CDK_.
 
-### Terraform 
+### Terraform
 
-Let's start with the most popular and probably most used tool, _Hashicorp's Terraform_. _Terraform_ is an open-source infrastructure-as-code software that prides itself on being platform agnostic. This means you can use this tool to provision infrastructure in any public cloud as well as on-premise. 
+Let's start with the most popular and probably most used tool, _Hashicorp's Terraform_. _Terraform_ is an open-source infrastructure-as-code software that prides itself on being platform agnostic. This means you can use this tool to provision infrastructure in any public cloud as well as on-premise.
 
 This platform independence is accomplished by the codification of each of the cloud providers APIs into what _Hashicorp_ calls [terraform providers] (https://registry.terraform.io/browse/providers).
 
@@ -59,7 +59,7 @@ After installing the [_terraform cli_] (https://www.terraform.io/downloads.html)
   * processes the resources in the terraform template file and does a check against the terraform state file to see the difference between what is already running and what is new
   * the changes (existing and new) resources are described in the output
 * _terraform apply_
-  * runs the output of the _plan_ command and provisions the changes to the specific environment. 
+  * runs the output of the _plan_ command and provisions the changes to the specific environment.
 
 Within the _terraform_ template file you specify the _provider block_, as shown in the snippet below, this will indicate to the _terraform cli_ to use the APIs for the specified provider.
 
@@ -91,9 +91,9 @@ provider "aws" {
 // create micro ec2 instance
 resource "aws_instance" "web_server" {
     // Amazon Machine Image ID of an Ubuntu 18.04 AMI  in us-east-1
-    ami = "ami-09e67e426f25ce0d7" 
+    ami = "ami-09e67e426f25ce0d7"
     vpc_security_group_ids = [aws_security_group.web_server.id]
-    // EC2 Instance to run 
+    // EC2 Instance to run
     instance_type = "t2.micro"    
     user_data = <<-EOF
                 #!/bin/bash
@@ -176,11 +176,11 @@ import { App, TerraformStack, Token } from 'cdktf';
 class MyStack extends TerraformStack {
  constructor(scope: Construct, name: string) {
    super(scope, name);
-   
+
    # Resources are defined here
  }
 }
- 
+
 const app = new App();
 new MyStack(app, 'demo');
 app.synth();
@@ -269,15 +269,17 @@ The `cdktf deploy` command will `synthesize` the code into a terraform configura
 
 Alternatively, you can use the `cdktf synth` command to generate terraform json configurations and then run terraform cli commands to provision the infrastructure.
 
+To tear down the infrastructure your run `cdktf destroy` which is the equivalent of running `terraform destroy`.
+
 Comparing the above snippet with the traditional HCL terraform snippet in the previous section you can see they are roughly the same number of lines of code. _Terraform CDK_ is ideal for developers who are familiar with languages such as python and typescript, which allows them to collaborate on the infrastructure provisioning code without having to learn HCL.
 
-For developers familiar with AWS CDK there is not as much of a learning curve to get started using the Terraform CDK, however those that aren't it’s a bit of a climb. 
+For developers familiar with AWS CDK there is not as much of a learning curve to get started using the Terraform CDK, however those that aren't it’s a bit of a climb.
 
-Currently the library is not as well-documented as traditional terraform, so you have to search through Hashicorp's [github repo] (https://github.com/hashicorp/terraform-cdk) to find what you are looking for and even then, is a bit disparate.
+Currently the library is not as well-documented as traditional terraform, so you have to search through Hashicorp's [github repo](https://github.com/hashicorp/terraform-cdk) to find what you are looking for and even then, is a bit disparate.
 
 It also suffers from limitations and kinks that always appear in Beta releases of any tool.
 
-To find the sample used in this post and additional samples using _Terraform CDK_ in various programming languages please visit my [github repo] (https://github.com/DavidDTessier/iac-tools-samples/tree/main/terraform_cdk).
+To find the sample used in this post and additional samples using _Terraform CDK_ in various programming languages please visit my [github repo](https://github.com/DavidDTessier/iac-tools-samples/tree/main/terraform_cdk).
 
 Overall thoughts on the above two tools, I will be sticking with traditional HCL terraform as it's more established and mature. However, I will continue to play around with CDK with hopes that by the time a v1 goes to GA it would have ironed out their issues enough that I can migrate production workloads to it.
 
