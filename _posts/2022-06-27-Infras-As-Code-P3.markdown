@@ -5,7 +5,6 @@ date:   2022-06-27 08:06:00
 tags: [IaC, devops, cloud, terraform, pulumi, arm, cloudformation, aws, gcloud, azure]
 ---
 
-<h1>THIS IS IN DRAFT....</h1>
 In [part 1](/2021/05/31/Infras-As-Code-P1.html) and [part 2](/_site/2021/05/31/Infras-As-Code-P2.html) we reviewed what infrastructure-as-code tools are as well as the following tools: [Terraform](https://www.terraform.io/), [Terraform CDK](https://github.com/hashicorp/terraform-cdk),[Azure Resource Manager (ARM)](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview), and [Azure Bicep](https://devblogs.microsoft.com/devops/project-bicep-next-generation-arm-templates/).
 
 In this third volume we will continue our disection of IaC tools; this time reviewing will will be focusing on AWS's two native solutions:
