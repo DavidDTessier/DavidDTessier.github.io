@@ -179,7 +179,7 @@ Delete operation operation-1675427504102-5f3cadd3a9cec-ad1707d8-f67f5e25 complet
 You can also view the deployment and its details in Google Cloud Console.
 
 
-## Throughts
+## Thoughts
 
 What is nice about deployment manager it is native to GCP so any time new API become available its automatically supported. Also there is no need to manage state seperately, unlike terraform, as its generated and re-generated on every update.
 
@@ -576,6 +576,8 @@ If you wish to delete a stack but not the cloud resources associated with it, yo
 ```
 
 That's it..pretty straight forward. There is still plenty more that can be done using pulumi however I kept this sample fairly light to show the basics.
+
+# Final Thoughts
 
 As a final thought around all the tools I have showcased over this series of posts not matter which tool you use make sure if fits your uses cases. From a multi-cloud perspective both Terraform and Pulumi function relatively the same, however Terraform has become the norm. If you looking at native integrations for a single Cloud you would likely use the native tooling such as Azure Bicep/ARM for Azure or CDK or CloudFormation for AWS as both of those toolsets are in sync with new feature of their respective platforms.
 
