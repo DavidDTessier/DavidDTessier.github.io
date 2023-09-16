@@ -1,0 +1,33 @@
+img[alt=Me] { 
+    float: left; 
+    display: block;
+    height:  20em; 
+    width: 20em; 
+    border-radius: 20em; 
+    padding: 10px; 
+    
+}
+
+body {
+    /*background: bisque; */
+    /* or, using CSS variables */
+    --md-default-bg-color: bisque;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+/* Blog Styles */
+.mdx-author {
+    display: flex;
+    font-size: 13.6px;
+  }
+  .mdx-author img {
+    height: 40px;
+    border-radius: 100%;
+  }
+  .mdx-author p:first-child {
+    flex-shrink: 0;
+    margin-right: 16px;
+  }
+  .mdx-author p > span {
+    display: block;
+  }

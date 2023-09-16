@@ -1,0 +1,85 @@
+site_name: Dave's Cloud Ramblings
+site_author: David Tessier <david.d.tessier@gmail.com>
+copyright: Copyright &copy; 2023 David Tessier
+extra_css:
+  - stylesheets/extra.css
+plugins:
+  - search
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/daviddtessier
+    - icon: fontawesome/brands/x-twitter
+      link: https://twitter.com/DavidDJTessier
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/david-tessier-66749613/
+    - icon: material/email
+      link: mailto:david.d.tessier@gmail.com
+  blog:
+    dir: blog
+    author: David Tessier
+    author_image: assets/images/me.jpg
+    words_read_per_minute: 300
+    list_length: 25
+    extended_preview: true
+
+markdown_extensions:
+  - toc:
+      title: On this page
+      permalink: true
+  - attr_list
+  - md_in_html
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - def_list
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.caret
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+theme: 
+  name: material
+  custom_dir: overrides
+  favicon: assets/images/cloud.jpg
+  logo: assets/images/cloud.jpg
+  language: en
+  palette: 
+  # Light and Dark Theme Toggle
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep orange
+      accent: deep orange
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.indexes
+
+nav:
+  - Home: index.md
+  - About me: about.md
+  - Blog:
+      - index.md
+      - 2021:
+          - 09:
+            - blog/2023/09/first.md
+
+
+
+
+  
+
+
+
+      
