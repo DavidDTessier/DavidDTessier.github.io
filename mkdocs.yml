@@ -1,4 +1,4 @@
-site_name: Dave's Cloud Ramblings
+site_name: Cloud Ramblings
 site_author: David Tessier <david.d.tessier@gmail.com>
 copyright: Copyright &copy; 2023 David Tessier
 extra_css:
@@ -10,8 +10,10 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/daviddtessier
-    - icon: fontawesome/brands/x-twitter
+    - icon: fontawesome/brands/square-x-twitter
       link: https://twitter.com/DavidDJTessier
+    - icon: fontawesome/brands/threads
+      link: https://www.threads.net/@daviddtessier
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/david-tessier-66749613/
     - icon: material/email
@@ -49,28 +51,34 @@ theme:
   logo: assets/images/cloud.jpg
   language: en
   palette: 
-  # Light and Dark Theme Toggle
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+  # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
+   # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: deep orange
-      accent: deep orange
+      primary: orange
+      accent: blue
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
   features:
-    - navigation.instant
-    - navigation.indexes
+    - navigation.tabs
+    - navigation.tracking
 
 nav:
   - Home: index.md
   - About me: about.md
-  - Blog:
-      - index.md
+  - Posts:
+      - blog/index.md
       - 2021:
           - 09:
             - blog/2023/09/first.md
